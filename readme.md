@@ -39,3 +39,27 @@ Clone o repositório do projeto em sua máquina local.
 ```bash
 git clone https://github.com/seu-usuario/youtube-url-manager-backend.git
 cd youtube-url-manager-backend
+```
+
+### 2. Criar e Ativar o Ambiente Virtual
+
+É recomendável criar um ambiente virtual para instalar as dependências do projeto:
+
+```bash
+
+python -m venv venv
+source venv/bin/activate  # No Windows use venv\Scripts\activate
+```
+
+### 3. Instalar as Dependências
+
+Instale as bibliotecas e pacotes necessários:
+
+```bash
+
+pip install -r requirements.txt
+```
+
+### 4. Configurar o Banco de Dados
+
+O projeto já está configurado para usar o SQLite como banco de dados padrão. Se quiser usar outro banco de dados, edite o arquivo settings.py.
