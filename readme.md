@@ -18,14 +18,14 @@ O Back-end oferece as seguintes funcionalidades via API RESTful:
 - **Django**: Framework web em Python utilizado para gerenciar o Back-end da aplicação.
 - **Django REST Framework (DRF)**: Extensão do Django para criação de APIs RESTful.
 - **SQLite**: Banco de dados utilizado para armazenar as URLs (pode ser substituído por outro banco de dados).
-- **Python 3.x**: Linguagem de programação para desenvolvimento do Back-end.
+- **Python 3.11**: Linguagem de programação para desenvolvimento do Back-end.
 
 ---
 
 ## Pré-requisitos
 
 Antes de executar o projeto, você precisará ter instalado em sua máquina:
-- **Python 3.x**
+- **Python 3.11**
 - **Pip** (gerenciador de pacotes Python)
 - **Virtualenv** (opcional, mas recomendado para isolamento do ambiente)
 
@@ -37,7 +37,7 @@ Antes de executar o projeto, você precisará ter instalado em sua máquina:
 Clone o repositório do projeto em sua máquina local.
 
 ```bash
-git clone https://github.com/seu-usuario/youtube-url-manager-backend.git
+git clone https://github.com/brunoVale03/youtube-url-manager-backend.git
 cd youtube-url-manager-backend
 ```
 
@@ -60,6 +60,58 @@ Instale as bibliotecas e pacotes necessários:
 pip install -r requirements.txt
 ```
 
-### 4. Configurar o Banco de Dados
+### 4. Executar as Migrações
 
-O projeto já está configurado para usar o SQLite como banco de dados padrão. Se quiser usar outro banco de dados, edite o arquivo settings.py.
+Aplique as migrações para criar as tabelas no banco de dados:
+
+```bash
+
+python manage.py migrate
+```
+
+### 5. Iniciar o Servidor de Desenvolvimento
+
+Com tudo configurado, execute o servidor localmente:
+
+```bash
+
+python manage.py runserver
+```
+
+
+A aplicação estará disponível em http://127.0.0.1:8000/.
+
+
+### Endpoints
+
+Aqui estão os principais endpoints da API:
+
+- **GET /api/urls/**: Lista todas as URLs do YouTube.
+- **POST /api/urls/**: Adiciona uma nova URL do YouTube.
+- **GET /api/urls/`<id>`/**: Recupera uma URL específica pelo seu ID.
+- **DELETE /api/urls/`<id>`/**: Deleta uma URL pelo seu ID.
+
+### Melhorias Futuras
+
+- Implementar autenticação para usuários.
+- Adicionar paginação à listagem de URLs.
+- Adicionar validação mais rigorosa para URLs.
+- Melhorar o sistema de logs e monitoramento de erros.
+
+### Observações/Bugs
+
+- URLs inválidas podem ser inseridas sem validação (melhoria futura).
+- No momento, não há uma interface para feedback em caso de falhas de requisições.
+
+### Deploy
+
+Para realizar o deploy da aplicação, siga os seguintes passos:
+
+- Configurar as variáveis de ambiente (como SECRET_KEY e detalhes do banco de dados) em seu ambiente de produção.
+- Realizar as migrações do banco de dados com python manage.py migrate.
+- Usar um servidor de produção adequado (como Gunicorn ou uWSGI) para servir o Django.
+- Configurar um servidor web (como Nginx ou Apache) para servir os arquivos estáticos e fazer o proxy reverso para o Django.
+
+### Contribuições
+
+Se você quiser contribuir para este projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request.
